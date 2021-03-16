@@ -33,8 +33,8 @@ var numPcContainer = []; // because the generated numbers cannot be repeated we 
 for (i = 0; i < 16; i++) { // then I tell the pc to repeat the random number genetator for 16 times.
   var pcRndNumber = numberGeneratorPc(1, 100); // telling it to start from 1 and ending at 100.
   var checkNumberPc = numPcContainer.includes(pcRndNumber); // then I use the "includes" function to make him go check into the array if the number generator (repeated 16 times) is there or not (true if present, false if not).
-  numPcContainer.push(pcRndNumber);
-// here I force this value INTO the array
+  numPcContainer.push(pcRndNumber); // here I force this value INTO the array
+
   if (checkNumberPc == numPcContainer) {
     console.log('value repeated', true);
 
