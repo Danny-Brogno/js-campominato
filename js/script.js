@@ -19,30 +19,129 @@
 // Le validazioni e i controlli possiamo farli anche in un secondo momento.
 // Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve… (WHILE)
 
+// -------------------------------------------------------------
 
-function numberGeneratorPc (min, max) { // this will generate numbers, I define a min and max so I can re-use the function with different numbers (not just from 1 to 100).
-  var minRnd = min;
-  var maxRnd = max - minRnd + 1;
-  var randomNumber = Math.floor(Math.random() * maxRnd) + minRnd;
-  return randomNumber;
-}
+// function numberGeneratorPc (min, max) { // this will generate numbers, I define a min and max so I can re-use the function with different numbers (not just from 1 to 100).
+//   var minRnd = min;
+//   var maxRnd = max - minRnd + 1;
+//   var randomNumber = Math.floor(Math.random() * maxRnd) + minRnd;
+//   return randomNumber;
+// }
+//
+// var numPcContainer = []; // because the generated numbers cannot be repeated we gotta create an empty array in which to put those very numbers.
+//
+// // HERE I SHOULD PUT WHILE
+// for (i = 0; i < 16; i++) { // then I tell the pc to repeat the random number genetator for 16 times.
+//   var pcRndNumber = numberGeneratorPc(1, 100); // telling it to start from 1 and ending at 100.
+//   var checkNumberPc = numPcContainer.includes(pcRndNumber); // then I use the "includes" function to make him go check into the array if the number generator (repeated 16 times) is there or not (true if present, false if not).
+//   numPcContainer.push(pcRndNumber); // here I force this value INTO the array
+//
+//   if (checkNumberPc == true) {
+//     console.log('value repeated');
+//
+//   } else {
+//     console.log('value NOT repeated', false);
+//
+//   }
+//
+//   console.log(pcRndNumber, checkNumberPc);
+// }
 
-var numPcContainer = []; // because the generated numbers cannot be repeated we gotta create an empty array in which to put those very numbers.
+// -------------------------------------------------------------
 
-// HERE I SHOULD PUT WHILE
-for (i = 0; i < 16; i++) { // then I tell the pc to repeat the random number genetator for 16 times.
-  var pcRndNumber = numberGeneratorPc(1, 100); // telling it to start from 1 and ending at 100.
-  var checkNumberPc = numPcContainer.includes(pcRndNumber); // then I use the "includes" function to make him go check into the array if the number generator (repeated 16 times) is there or not (true if present, false if not).
-  numPcContainer.push(pcRndNumber); // here I force this value INTO the array
 
-  if (checkNumberPc == numPcContainer) {
-    console.log('value repeated', true);
 
-  } else {
-    console.log('value NOT repeated', false);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// CAMPO minato
+
+// var numero totale di caselle = 100;
+
+// funzione startGame();
+
+// genera bombe (16)
+// [15, 45, 34, 78, 1, 12..........]
+
+// numeri scelti dall'utente [] (fare un secondo array per tutti i numeri scelti dall'utente)
+
+// ciclo (while)
+
+  // chiedere un numero all'utente
+  // 45
+
+  // IF questo numero NON me lo ha già dato? SI (allora si attiva il codice sotto prima dell'else)
+
+    // IF il numero corrisponde ad una bomba?
+    // si = game over;
+    // break (interrompe il gioco)
+    // ELSE
+    // no = 45 lo pusherò nell'array dei numeri dell'utente (secondo array)
+
+  // ELSE (nel caso in cui il numero dato dall'utente si ripetesi ripete)
+
+// fine ciclo
+
+// array di numeri
+
+
+
+function startGame () {
+
+  var bombe = generaBombe(16);
+  console.log(bombe);
+  var numeriUtente = [];
+
+  while (numeriUtente.length < (100 - 16)) {
+
+    var num = parseInt(prompt('dimmi un numero'));
+    console.log(num);
+
+    if ( inArray(numeriUtente, num)) {
+      // non fare niente
+      console.log('hai già inserito questo numero');
+    } else {
+
+      numeriUtente.push(num);
+
+      if ( inArray (bombe, num)) {
+        console.log("sei morto");
+      } else {
+        console.log("push" + num);
+      }
+    }
+
+
   }
 
-  console.log(pcRndNumber, checkNumberPc);
+
+
+
+
+
+  console.log(num);
+  console.log(bombe);
+  console.log(numeriUtente);
 }
 
 
@@ -50,7 +149,65 @@ for (i = 0; i < 16; i++) { // then I tell the pc to repeat the random number gen
 
 
 
+//
+// function generaBombe() {
+//   var bombe = [];
+//   // ciclo (finchè la lunghezza dell'array "bombe" non sarà uguale al numero di bombe da generare);
+//
+//     // genera numero random e pusha in array "bombe".
+//
+//
+//     // return array
+//
+//     // fine ciclo
+// }
 
+function inArray(array,value) {
+  // controllo parametri;
+  value = parseInt(value);
+  var bool = array.includes(value);
+  // if (bool == true) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+  return bool;
+}
+
+// var esito = inArray([15, 2], 2);
+// console.log(esito);
+
+function generaBombe(num) {
+  var bombe = [];
+  for (var i = 0; i < num; i++) {
+    var n = getRandom(1, 100);
+    console.log(i, n, bombe.length);
+  }
+
+  while (bombe.length < num) {
+    var n = getRandom(1, 100);
+    console.log(n, bombe.length);
+
+    if ( inArray(bombe, n) ) {
+      // non faccio niente
+    } else { // senno lo pusho ell'array
+      bombe.push(n);
+    }
+  }
+
+  return bombe;
+}
+
+// var bombe = generaBombe(61);
+// console.log(bombe);
+
+function getRandom (min, max) {
+  var rnd = Math.random() * (max - min);
+  var rnd = Math.floor(rnd) + min + 1;
+  return rnd;
+}
+
+console.log(getRandom(1, 100));
 
 
 
