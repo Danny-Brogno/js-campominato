@@ -34,6 +34,13 @@ for (i = 0; i < 16; i++) { // then I tell the pc to repeat the random number gen
   var pcRndNumber = numberGeneratorPc(1, 100); // telling it to start from 1 and ending at 100.
   var checkNumberPc = numPcContainer.includes(pcRndNumber); // then I use the "includes" function to make him go check into the array if the number generator (repeated 16 times) is there or not (true if present, false if not).
   numPcContainer.push(pcRndNumber);
+
+  if (checkNumberPc == true) {
+    console.log('value repeated', true);
+  } else {
+    console.log('value NOT repeated', false);
+  }
+
   console.log(pcRndNumber, checkNumberPc);
 }
 
