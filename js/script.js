@@ -17,7 +17,7 @@
 // Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dati giusti.
 // Proviamo prima con pochi numeri, inserire 86 numeri ogni volta potrebbe essere un po’ scocciante :occhiolino:
 // Le validazioni e i controlli possiamo farli anche in un secondo momento.
-// Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve…
+// Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve… (WHILE)
 
 
 function numberGeneratorPc (min, max) { // this will generate numbers, I define a min and max so I can re-use the function with different numbers (not just from 1 to 100).
@@ -29,13 +29,12 @@ function numberGeneratorPc (min, max) { // this will generate numbers, I define 
 
 var numPcContainer = []; // because the generated numbers cannot be repeated we gotta create an empty array in which to put those very numbers.
 
+// HERE I SHOULD PUT WHILE
 for (i = 0; i < 16; i++) { // then I tell the pc to repeat the random number genetator for 16 times.
   var pcRndNumber = numberGeneratorPc(1, 100); // telling it to start from 1 and ending at 100.
-  var checkNumberPc = numPcContainer.includes(pcRndNumber); // then I use the "includes" function to make him go check into the array if the number generator (repeated 16 times) is thee or not (true if present, false if not).
+  var checkNumberPc = numPcContainer.includes(pcRndNumber); // then I use the "includes" function to make him go check into the array if the number generator (repeated 16 times) is there or not (true if present, false if not).
   numPcContainer.push(pcRndNumber);
   console.log(pcRndNumber, checkNumberPc);
-
-
 }
 
 console.log(numPcContainer);
