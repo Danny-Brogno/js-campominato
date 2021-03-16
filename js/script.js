@@ -34,6 +34,8 @@ for (i = 0; i < 16; i++) { // then I tell the pc to repeat the random number gen
   var checkNumberPc = numPcContainer.includes(pcRndNumber); // then I use the "includes" function to make him go check into the array if the number generator (repeated 16 times) is thee or not (true if present, false if not).
   numPcContainer.push(pcRndNumber);
   console.log(pcRndNumber, checkNumberPc);
+
+
 }
 
 console.log(numPcContainer);
