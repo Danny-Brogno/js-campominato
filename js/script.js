@@ -20,6 +20,67 @@
 // Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve…
 
 
+function numberGeneratorPc (min, max) { // this will generate numbers, I define a min and max so I can re-use the function with different numbers (not just from 1 to 100).
+  var minRnd = min;
+  var maxRnd = max - minRnd + 1;
+  var randomNumber = Math.floor(Math.random() * maxRnd) + minRnd;
+  return randomNumber;
+}
+
+var numPcContainer = []; // because the generated numbers cannot be repeated we gotta create an empty array in which to put those very numbers.
+
+for (i = 0; i < 16; i++) { // then I tell the pc to repeat the random number genetator for 16 times.
+  var pcRndNumber = numberGeneratorPc(1, 100); // telling it to start from 1 and ending at 100.
+  var checkNumberPc = numPcContainer.includes(pcRndNumber); // then I use the "includes" function to make him go check into the array if the number generator (repeated 16 times) is thee or not (true if present, false if not).
+  numPcContainer.push(pcRndNumber);
+  console.log(pcRndNumber, checkNumberPc);
+}
+
+console.log(numPcContainer);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Recap funzioni
 // 1 = cosa sono
@@ -30,37 +91,37 @@
 
 // dichiarazione della funzione
 
-function subtraction (firstNumber, secondNumber) {
-  var result = firstNumber - secondNumber;
-  console.log("Subtraction exercise", result);
-  return result;
-}
-
-function sum (firstNumber, secondNumber) {
-  var result = firstNumber + secondNumber;
-  console.log("Sum exercise", result);
-  return result;
-}
-
-function multiplier (firstNumber, secondNumber) {
-  var result = firstNumber * secondNumber;
-  console.log("Multiplier exercise", result);
-  return result;
-}
-
-function divider (nominatore, denominatore) {
-  var result = nominatore / denominatore;
-  console.log("Divider exercise", result);
-  return result;
-}
-
-// esecuzione
-
-// console.log("prima della funzione");
-
-var menus = subtraction(100, 31);
-var plus = sum(60, 9);
-var times = multiplier(7, 10);
-var dividedBy = divider(70, 7);
+// function subtraction (firstNumber, secondNumber) {
+//   var result = firstNumber - secondNumber;
+//   console.log("Subtraction exercise", result);
+//   return result;
+// }
+//
+// function sum (firstNumber, secondNumber) {
+//   var result = firstNumber + secondNumber;
+//   console.log("Sum exercise", result);
+//   return result;
+// }
+//
+// function multiplier (firstNumber, secondNumber) {
+//   var result = firstNumber * secondNumber;
+//   console.log("Multiplier exercise", result);
+//   return result;
+// }
+//
+// function divider (nominatore, denominatore) {
+//   var result = nominatore / denominatore;
+//   console.log("Divider exercise", result);
+//   return result;
+// }
+//
+// // esecuzione
+//
+// // console.log("prima della funzione");
+//
+// var menus = subtraction(100, 31);
+// var plus = sum(60, 9);
+// var times = multiplier(7, 10);
+// var dividedBy = divider(70, 7);
 
 // console.log("dopo la funzione");
