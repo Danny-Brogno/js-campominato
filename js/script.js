@@ -103,115 +103,179 @@
 // fine ciclo
 
 // array di numeri
+//
+//
+//
+// function startGame () {
+//
+//   var bombe = generaBombe(16);
+//   console.log(bombe);
+//   var numeriUtente = [];
+//
+//   while (numeriUtente.length < (100 - 16)) {
+//
+//     var num = parseInt(prompt('dimmi un numero'));
+//     console.log(num);
+//
+//     if ( inArray(numeriUtente, num)) {
+//       // non fare niente
+//       console.log('hai già inserito questo numero');
+//     } else {
+//
+//       numeriUtente.push(num);
+//
+//       if ( inArray (bombe, num)) {
+//         console.log("sei morto");
+//       } else {
+//         console.log("push" + num);
+//       }
+//     }
+//
+//
+//   }
+//
+//   console.log(num);
+//   console.log(bombe);
+//   console.log(numeriUtente);
+// }
+//
+//
+//
+//
+//
+//
+// //
+// // function generaBombe() {
+// //   var bombe = [];
+// //   // ciclo (finchè la lunghezza dell'array "bombe" non sarà uguale al numero di bombe da generare);
+// //
+// //     // genera numero random e pusha in array "bombe".
+// //
+// //
+// //     // return array
+// //
+// //     // fine ciclo
+// // }
+//
+// function inArray(array,value) {
+//   // controllo parametri;
+//   value = parseInt(value);
+//   var bool = array.includes(value);
+//   // if (bool == true) {
+//   //   return true;
+//   // } else {
+//   //   return false;
+//   // }
+//   return bool;
+// }
+//
+// // var esito = inArray([15, 2], 2);
+// // console.log(esito);
+//
+// function generaBombe(num) {
+//   var bombe = [];
+//   for (var i = 0; i < num; i++) {
+//     var n = getRandom(1, 100);
+//     console.log(i, n, bombe.length);
+//   }
+//
+//   while (bombe.length < num) {
+//     var n = getRandom(1, 100);
+//     console.log(n, bombe.length);
+//
+//     if ( inArray(bombe, n) ) {
+//       // non faccio niente
+//     } else { // senno lo pusho ell'array
+//       bombe.push(n);
+//     }
+//   }
+//
+//   return bombe;
+// }
+//
+// // var bombe = generaBombe(61);
+// // console.log(bombe);
+//
+// function getRandom (min, max) {
+//   var rnd = Math.random() * (max - min);
+//   var rnd = Math.floor(rnd) + min + 1;
+//   return rnd;
+// }
+//
+// console.log(getRandom(1, 100));
 
 
 
-function startGame () {
 
-  var bombe = generaBombe(16);
-  console.log(bombe);
-  var numeriUtente = [];
 
-  while (numeriUtente.length < (100 - 16)) {
 
-    var num = parseInt(prompt('dimmi un numero'));
-    console.log(num);
 
-    if ( inArray(numeriUtente, num)) {
-      // non fare niente
-      console.log('hai già inserito questo numero');
+
+
+
+
+
+
+
+function getRandomValue(min, max) {
+  var localMin = min;
+  var localMax = max - min + 1;
+
+  return Math.floor(Math.random() * localMax) + localMin;
+}
+
+function getRandomArray() {
+  var arr = [1, 2, 3];
+
+  while (arr.length < 16) {
+
+    var rnd = getRandomValue(1, 100);
+    if (!randomValues.includes(rnd)) {
+      randomValues.push(rnd);
+    }
+  }
+
+  return randomValues;
+}
+
+function playGame(randomValues) {
+  var requestedValue = 100 - randomValues.length;
+
+  var userValues = [];
+
+  while (userValues.length < requestedValue) {
+
+    var newValue = parseInt(prompt('Dammi numero'));
+
+    if (newValue < 1 || newValue > 100 || userValue.includes(newValue)) {
+      console.log('Valore non utilizzabile. Si prega di riprovare');
     } else {
 
-      numeriUtente.push(num);
+      if (randomValues.includes(newValue)) {
+        console.log('end of game');
 
-      if ( inArray (bombe, num)) {
-        console.log("sei morto");
       } else {
-        console.log("push" + num);
+        userValues.push(newValue);
       }
     }
+  }
+  console.log(userValues);
+}
 
+function init() {
+  var pcValues = getRandomArray();
+  console.log('pc values', pcValues);
+  var res = playGame(pcValues);
+  if (res) {
+    console.log('hai vinto');
 
+  } else {
+    console.log('hai perso');
   }
 
-
-
-
-
-
-  console.log(num);
-  console.log(bombe);
-  console.log(numeriUtente);
 }
 
-
-
-
-
-
-//
-// function generaBombe() {
-//   var bombe = [];
-//   // ciclo (finchè la lunghezza dell'array "bombe" non sarà uguale al numero di bombe da generare);
-//
-//     // genera numero random e pusha in array "bombe".
-//
-//
-//     // return array
-//
-//     // fine ciclo
-// }
-
-function inArray(array,value) {
-  // controllo parametri;
-  value = parseInt(value);
-  var bool = array.includes(value);
-  // if (bool == true) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
-  return bool;
-}
-
-// var esito = inArray([15, 2], 2);
-// console.log(esito);
-
-function generaBombe(num) {
-  var bombe = [];
-  for (var i = 0; i < num; i++) {
-    var n = getRandom(1, 100);
-    console.log(i, n, bombe.length);
-  }
-
-  while (bombe.length < num) {
-    var n = getRandom(1, 100);
-    console.log(n, bombe.length);
-
-    if ( inArray(bombe, n) ) {
-      // non faccio niente
-    } else { // senno lo pusho ell'array
-      bombe.push(n);
-    }
-  }
-
-  return bombe;
-}
-
-// var bombe = generaBombe(61);
-// console.log(bombe);
-
-function getRandom (min, max) {
-  var rnd = Math.random() * (max - min);
-  var rnd = Math.floor(rnd) + min + 1;
-  return rnd;
-}
-
-console.log(getRandom(1, 100));
-
-
-
-
+init();
 
 
 
